@@ -1,25 +1,45 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DotLottie Player</title>
+  <title>Execute dotlottie-player Based on Variable Value</title>
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
   <style>
-    body, html {
+    /* html 및 body 요소의 여백 제거 및 배경색 설정 */
+    html, body {
       margin: 0;
       padding: 0;
       width: 100%;
       height: 100%;
       overflow: hidden;
+      background-color: black; /* 배경색 검은색으로 설정 */
     }
-    dotlottie-player {
+
+    /* lottieContainer 요소의 크기 설정 */
+    #lottieContainer {
       width: 100%;
       height: 100%;
     }
   </style>
 </head>
 <body>
-  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-  <dotlottie-player src="https://lottie.host/071cccc3-b83e-4457-8bed-3fca907267cf/NSduZlXklu.json" background="black" speed="2" direction="1" playMode="normal" autoplay></dotlottie-player>
+  <!-- Container for dotlottie-player -->
+  <div id="lottieContainer"><script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <dotlottie-player src="https://lottie.host/071cccc3-b83e-4457-8bed-3fca907267cf/NSduZlXklu.json" background="transparent" speed="1" style="width: 100%; height: 100%" direction="1" playMode="normal"></dotlottie-player></div>
+
+  <script>
+    // 첫 번째 변수
+    var myVariable1 = 1;
+
+
+    // 첫 번째 변수에 따라 다른 애니메이션 표시
+    if (myVariable1 === 1) {
+      // lottieContainer에 첫 번째 애니메이션 삽입
+      var lottieContainer = document.getElementById('lottieContainer');
+      lottieContainer.innerHTML = '<dotlottie-player src="https://lottie.host/071cccc3-b83e-4457-8bed-3fca907267cf/NSduZlXklu.json" background="transparent" speed="1" style="width: 100%; height: 100%" direction="1" playMode="normal" autoplay></dotlottie-player>';
+    }
+
+  </script>
 </body>
 </html>
