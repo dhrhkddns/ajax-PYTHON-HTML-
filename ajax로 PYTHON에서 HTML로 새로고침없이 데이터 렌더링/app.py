@@ -3,17 +3,13 @@ import random
 import threading
 from colorama import init, Fore
 #작업 디렉토리가 달라서 설정해주고 실시간으로 변하는 변수를 다른 py파일에서 받아온다.
-import sys
-sys.path.append('C:/Users/omyra/OneDrive/바탕 화면/segment_detection_합치기_프로젝트')
 
-import yolov8_region_counter
 
 # colorama 초기화
 init(autoreset=True)
 
 
 app = Flask(__name__)
-
 @app.route('/data', methods=['GET'])
 def get_data():
     data = {'name': 'John', 'age': 30, 'city': 'New York'}
@@ -32,8 +28,9 @@ def yoooo():
 
 @app.route('/golf_score', methods=['GET'])
 def golf_score():
-    
-    return str(yolov8_region_counter.vid_frame_count)  # 'age' 키에 대한 값만 반환
+    with open("shared_value.txt", "r") as a:
+        content = int(a.read())
+    return str(content) 
 
 if __name__ == '__main__':
     #스레드 생성
